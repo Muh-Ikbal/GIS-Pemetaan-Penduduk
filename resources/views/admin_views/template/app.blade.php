@@ -17,20 +17,25 @@
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <!-- CSS Files -->
-  <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
+  <link id="pagestyle" href="admin_assets/css/soft-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
-    @include('admin_views.template.sidebar')
-    
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-  <script src="../assets/js/plugins/chartjs.min.js"></script>
+  @include('admin_views.template.sidebar')
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    @include('admin_views.template.navbar')
+    @yield('content')
+  </main>
+  <div class="fixed-plugin">
+    @include('admin_views.template.config-ui')
+  </div>
+  <script src="{{ asset('admin_assets/js/core/popper.min.js') }}"></script>
+  <script src="{{ asset('admin_assets/js/core/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('admin_assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
+  <script src="{{ asset('admin_assets/js/plugins/chartjs.min.js') }}"></script>
   <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
 
@@ -213,7 +218,9 @@
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script>
+  {{-- <script src="../assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script> --}}
+  {{-- <script src="{{ asset('admin_assets/js/soft-ui-dashboard.js') }}"></script> --}}
+  <script src="{{ asset('admin_assets/js/soft-ui-dashboard.min.js') }}"></script>
 </body>
 
 </html>
