@@ -7,7 +7,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Soft UI Dashboard 3 by Creative Tim
+    GIS - Kepadatan Penduduk
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
@@ -15,17 +15,17 @@
   <link href="https://demos.creative-tim.com/soft-ui-dashboard/assets/css/nucleo-icons.css" rel="stylesheet" />
   <link href="https://demos.creative-tim.com/soft-ui-dashboard/assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
   <!-- CSS Files -->
-  <link id="pagestyle" href="admin_assets/css/soft-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
+  <link id="pagestyle" href="{{ asset('admin_assets/css/soft-ui-dashboard.css?v=1.1.0') }}" rel="stylesheet" />
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
-  <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
 </head>
 
-<body class="g-sidenav-show  bg-gray-100">
+<body class="g-sidenav-show bg-gray-100">
   @include('admin_views.template.sidebar')
-  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps ps--active-y ">
     @include('admin_views.template.navbar')
     @yield('content')
   </main>
@@ -35,6 +35,8 @@
   <script src="{{ asset('admin_assets/js/core/popper.min.js') }}"></script>
   <script src="{{ asset('admin_assets/js/core/bootstrap.min.js') }}"></script>
   <script src="{{ asset('admin_assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
+  <script src="{{ asset('admin_assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+
   <script src="{{ asset('admin_assets/js/plugins/chartjs.min.js') }}"></script>
   <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
@@ -206,6 +208,7 @@
       },
     });
   </script>
+
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -219,8 +222,43 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   {{-- <script src="../assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script> --}}
+  {{-- <script>
+    // Toggle Sidenav
+    const iconNavbarSidenav = document.getElementById('iconNavbarSidenav');
+    const iconSidenav = document.getElementById('iconSidenav');
+    const sidenav = document.getElementById('sidenav-main');
+    let body = document.getElementsByTagName('body')[0];
+    let className = 'g-sidenav-pinned';
+
+    if (iconNavbarSidenav) {
+      iconNavbarSidenav.addEventListener("click", toggleSidenav);
+    }
+
+    if (iconSidenav) {
+      iconSidenav.addEventListener("click", toggleSidenav);
+    }
+
+    function toggleSidenav() {
+      console.log("hello bang")
+      if (body.classList.contains(className)) {
+        body.classList.remove(className);
+        setTimeout(function() {
+          sidenav.classList.remove('bg-white');
+        }, 100);
+        sidenav.classList.remove('bg-transparent');
+
+      } else {
+        body.classList.add(className);
+        sidenav.classList.add('bg-white');
+        sidenav.classList.remove('bg-transparent');
+        iconSidenav.classList.remove('d-none');
+      }
+    }
+  </script> --}}
+  <script src="{{ asset('admin_assets/js/soft-ui-dashboard.min.js?v=1.1.0') }}"></script>
   {{-- <script src="{{ asset('admin_assets/js/soft-ui-dashboard.js') }}"></script> --}}
-  <script src="{{ asset('admin_assets/js/soft-ui-dashboard.min.js') }}"></script>
+  {{-- <script src="{{ asset('admin_assets/js/soft-ui-dashboard.min.js') }}"></script> --}}
+
 </body>
 
 </html>

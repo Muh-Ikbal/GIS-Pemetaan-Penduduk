@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string("nama_kecamatan");
             $table->string("kode_pos");
             $table->string("geojson");
+            $table->decimal("latitude", 10, 8);
+            $table->decimal("longitude", 11, 8);
             $table->text("description")->nullable();
             $table->string("image")->nullable();
             $table->timestamps();

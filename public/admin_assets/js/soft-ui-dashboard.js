@@ -603,6 +603,7 @@ if (iconSidenav) {
 }
 
 function toggleSidenav() {
+    console.log("hello bang")
   if (body.classList.contains(className)) {
     body.classList.remove(className);
     setTimeout(function() {
