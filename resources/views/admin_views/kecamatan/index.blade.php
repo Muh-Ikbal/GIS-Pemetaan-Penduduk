@@ -36,7 +36,7 @@
                     <h6 class="mb-0 text-sm text-center">{{ $data['nama_kecamatan'] }}</h6>
                   </td>
                   <td>
-                    <p class="text-xs font-weight-bold mb-0">{{ $data['description'] }}</p>
+                    <p class="text-xs font-weight-bold mb-0 max-width-100 text-truncate d-inline-block">{{ $data['description'] }}</p>
                   </td>
                   <td class="align-middle text-center text-sm">
                     <span class="text-secondary text-xs font-weight-bold">{{ $data['kode_pos'] }}</span>

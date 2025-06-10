@@ -72,7 +72,7 @@
               <label for="geojson" class="form-label">GeoJSON File</label>
               <input type="file" class="form-control @error('geojson') is-invalid @enderror"
                 value="{{ old('geojson', $kecamatan->geojson ?? '') }}" id="geojson" name="geojson"
-                accept=".geojson,.json" required>
+                accept=".geojson,.json" {{ !$kecamatan ? 'required' : '' }}>
               @error('geojson')
                 <div class="invalid-feedback">
                   {{ $message }}
@@ -82,7 +82,7 @@
             <div class="mb-3">
               <label for="image" class="form-label">Gambar Kecamatan</label>
               <input type="file" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}"
-                id="image" name="image" accept=".jpg,.png,.jpeg" required>
+                id="image" name="image" accept=".jpg,.png,.jpeg" {{ !$kecamatan ? 'required' : '' }}>
               @error('image')
                 <div class="invalid-feedback">
                   {{ $message }}
