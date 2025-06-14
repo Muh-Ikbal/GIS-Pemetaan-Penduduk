@@ -189,9 +189,7 @@ const Maps = () => {
                         className="appearance-none bg-gradient-to-r from-purple-500 to-purple-600 text-black px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-300 cursor-pointer"
                         value={selectedYear}
                     >
-                        {mapsData.length > 0 &&
-                        [...new Set(mapsData.map((item) => item.tahun))]
-                            .length > 0 ? (
+                        {Array.isArray(mapsData) && mapsData.length > 0 ? (
                             [
                                 ...new Set(mapsData.map((item) => item.tahun)),
                             ].map((tahun) => (
