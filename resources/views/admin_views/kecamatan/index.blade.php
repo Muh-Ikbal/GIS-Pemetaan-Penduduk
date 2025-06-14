@@ -17,6 +17,7 @@
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Kecamatan</th>
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Deskripsi</th>
                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kode Pos</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Luas</th>
                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Longitude</th>
                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Latitude</th>
                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">geojson</th>
@@ -25,6 +26,7 @@
             </thead>
             <tbody>
               @foreach ($kecamatan as $data)
+
                 <tr>
                   <td>
                     <div class="d-flex align-items-center justify-content-center">
@@ -36,10 +38,14 @@
                     <h6 class="mb-0 text-sm text-center">{{ $data['nama_kecamatan'] }}</h6>
                   </td>
                   <td>
-                    <p class="text-xs font-weight-bold mb-0 max-width-100 text-truncate d-inline-block">{{ $data['description'] }}</p>
+                    <p class="text-xs font-weight-bold mb-0 max-width-100 text-truncate d-inline-block">
+                      {{ $data['description'] }}</p>
                   </td>
                   <td class="align-middle text-center text-sm">
                     <span class="text-secondary text-xs font-weight-bold">{{ $data['kode_pos'] }}</span>
+                  </td>
+                  <td class="align-middle text-center text-sm">
+                    <span class="text-secondary text-xs font-weight-bold">{{ $data['luas'] }}</span>
                   </td>
                   <td class="align-middle text-center text-sm">
                     <span class="text-secondary text-xs font-weight-bold">{{ $data['longitude'] }}</span>
@@ -55,8 +61,8 @@
                     </a>
                   </td>
                   <td class="align-middle">
-                    <a href="{{ route('kecamatan.edit', base64_encode($data['id'])) }}" class=" btn btn-warning px-3 py-2"
-                      data-toggle="tooltip" data-original-title="Edit Kecamatan">
+                    <a href="{{ route('kecamatan.edit', base64_encode($data['id'])) }}"
+                      class=" btn btn-warning px-3 py-2" data-toggle="tooltip" data-original-title="Edit Kecamatan">
                       Edit
                     </a>
                     <a href="{{ route('kecamatan.delete', base64_encode($data['id'])) }}"

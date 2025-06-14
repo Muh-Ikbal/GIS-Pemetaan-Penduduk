@@ -121,7 +121,7 @@ const Maps = () => {
                                 color: "#9ca3af",
                             });
                             layer.bindPopup(
-                                `<div class="popup-gray text-white ">
+                                `<div class="popup-gray text-black ">
                                             <h3 class="font-bold text-lg mb-2">${kecamatan.nama_kecamatan}</h3>
                                             <p>Data tahun ${selectedYear} tidak tersedia.</p>
                                             <a class="" style="color:##f3f4f6 !important" href="kecamatan/${kecamatan.id}">detail</a>
@@ -189,19 +189,26 @@ const Maps = () => {
                         className="appearance-none bg-gradient-to-r from-purple-500 to-purple-600 text-black px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-300 cursor-pointer"
                         value={selectedYear}
                     >
-                        {[...new Set(mapsData.map((item) => item.tahun))].map(
-                            (tahun) => {
-                                return (
-                                    <option
-                                        className="text-black"
-                                        key={tahun}
-                                        value={tahun}
-                                    >
-                                        📅 Tahun {tahun}
-                                    </option>
-                                );
-                            }
+                        {mapsData.length > 0 &&
+                        [...new Set(mapsData.map((item) => item.tahun))]
+                            .length > 0 ? (
+                            [
+                                ...new Set(mapsData.map((item) => item.tahun)),
+                            ].map((tahun) => (
+                                <option
+                                    className="text-black"
+                                    key={tahun}
+                                    value={tahun}
+                                >
+                                    📅 Tahun {tahun}
+                                </option>
+                            ))
+                        ) : (
+                            <option disabled className="text-gray-500">
+                                Tidak ada data tahun
+                            </option>
                         )}
+
                         {/* <option value={2025}>📅 Tahun 2025</option>
                         <option value={2024}>📅 Tahun 2024</option>
                         <option value={2023}>📅 Tahun 2023</option>

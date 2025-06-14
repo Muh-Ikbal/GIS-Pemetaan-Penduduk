@@ -39,6 +39,16 @@
               @enderror
             </div>
             <div class="mb-3">
+              <label for="luas" class="form-label">Luas Kecamatan</label>
+              <input type="text" class="form-control @error('luas') is-invalid @enderror"
+                value="{{ old('luas', $kecamatan->luas ?? '') }}" id="luas" name="luas" required>
+              @error('luas')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+              @enderror
+            </div>
+            <div class="mb-3">
               <label for="description" class="form-label">Deskripsi</label>
               <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
                 rows="3">{{ old('description', $kecamatan->description ?? '') }}</textarea>

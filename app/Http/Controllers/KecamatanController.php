@@ -26,6 +26,7 @@ class KecamatanController extends Controller
         $request->validate([
             'nama_kecamatan' => 'required|string|max:255',
             'kode_pos' => 'required|string|max:10',
+            'luas' => 'required|numeric',
             'latitude' => 'required|numeric|between:-90,90',
             'longitude' => 'required|numeric|between:-180,180',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
@@ -48,6 +49,7 @@ class KecamatanController extends Controller
         $kecamatan = Kecamatan::create([
             'nama_kecamatan' => $request->nama_kecamatan,
             'kode_pos' => $request->kode_pos,
+            'luas' => $request->luas,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
             'image' => $nama_file_image,
@@ -87,6 +89,7 @@ class KecamatanController extends Controller
         $request->validate([
             'nama_kecamatan' => 'required|string|max:255',
             'kode_pos' => 'required|string|max:10',
+            'luas' => 'required|numeric',
             'latitude' => 'required|numeric|between:-90,90',
             'longitude' => 'required|numeric|between:-180,180',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
@@ -114,9 +117,11 @@ class KecamatanController extends Controller
         } else {
             $nama_file_image = $kecamatan->image;
         }
+        // dd($request->luas);
         $kecamatan->update([
             'nama_kecamatan' => $request->nama_kecamatan,
             'kode_pos' => $request->kode_pos,
+            'luas' => $request->luas,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
             'image' => $nama_file_image,

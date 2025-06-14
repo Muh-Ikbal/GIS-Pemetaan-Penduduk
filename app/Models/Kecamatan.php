@@ -14,7 +14,8 @@ class Kecamatan extends Model
         'longitude',
         'geojson',
         'description',
-        'image'
+        'image',
+        'luas'
     ];
 
 }
