@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\DataPendudukController;
 use App\Http\Controllers\UserViewController;
+use App\Http\Controllers\DashboardController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -24,13 +25,9 @@ use App\Http\Controllers\UserViewController;
 //     return view('admin_views.dashboard');
 // })->name('admin.dashboard');
 
-Route::get('/home', function () {
-    return view("user_views.home");
-});
+
 Route::prefix("admin")->middleware('auth')->group(function () {
-    Route::get('/', function () {
-        return view('admin_views.dashboard');
-    })->name('admin.dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -51,6 +48,9 @@ Route::prefix("admin")->middleware('auth')->group(function () {
         Route::put('/update/{id}', [DataPendudukController::class, 'update'])->name('data-penduduk.update');
         Route::get('/delete/{id}', [DataPendudukController::class, 'delete'])->name('data-penduduk.delete');
     });
+    Route::prefix("chart")->group(function () {
+        Route::get('/penduduk', [DashboardController::class, 'chartPenduduk'])->name('chart.penduduk');
+    });
 });
 
 Route::prefix("api")->group(function () {
@@ -61,5 +61,5 @@ Route::prefix("api")->group(function () {
 
 Route::get("/{any?}", function () {
     return view("user_views.app");
-})->where("any", '^(?!api|admin|storage|admin_assets|images).*$');
+})->where("any", '^(?!api|admin|storage|chart|admin_assets|images).*$');
 require __DIR__ . '/auth.php';

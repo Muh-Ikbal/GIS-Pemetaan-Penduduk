@@ -1,3 +1,4 @@
+
 const iconSideNav =  document.getElementById('iconNavbarSidenav')
 
 iconSideNav.addEventListener('click',function(){
@@ -20,3 +21,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   
+
+// chart data penduduk
+let chartInstance = null;
+async function renderChart() {
+    const ctx = document.getElementById('chartPenduduk')
+    try {
+        const response = await fetch('/admin/chart/penduduk');
+        const data = await response.json();
+
+        const { labels, datasets } = data;
+        if (chartInstance) {
+            chartInstance.destroy();
+        }
+        chartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Jumlah Penduduk per Kecamatan per Tahun'
+                    }
+                },
+                 scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+                
+            }
+        });
+    } catch (error) {
+        console.error('Gagal memuat data chart:', error);
+    }
+}
+
+// Jalankan setelah DOM siap
+document.addEventListener('DOMContentLoaded', renderChart);

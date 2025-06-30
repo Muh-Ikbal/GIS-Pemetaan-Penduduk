@@ -9,7 +9,10 @@ const Maps = () => {
     const [mapsData, setMapsData] = useState([]);
     const [kecamatanData, setKecamatanData] = useState([]);
     const [selectedYear, setSelectedYear] = useState();
-
+    // function generate color
+    function getRandomColor() {
+        return "#" + Math.floor(Math.random() * 16777215).toString(16);
+    }
     useEffect(() => {
         async function fetchData() {
             try {
@@ -65,6 +68,7 @@ const Maps = () => {
         let isCancelled = false;
         async function renderLayers() {
             for (const kecamatan of kecamatanData) {
+                const colorLine = getRandomColor();
                 if (isCancelled) return;
                 const response = await axios.get(
                     `storage/geojson/${kecamatan.geojson}`
@@ -88,28 +92,43 @@ const Maps = () => {
                             let color;
                             const kepadatan = dataPenduduk.kepadatan_penduduk;
                             if (kepadatan < 500) {
-                                color = "#8b5cf6"; // Purple light
+                                color = "#4ade80 "; // Purple light
                             } else if (kepadatan < 1500) {
-                                color = "#7c3aed"; // Purple medium
+                                color = "#eab308"; // Purple medium
                             } else if (kepadatan < 3000) {
-                                color = "#6d28d9"; // Purple dark
+                                color = "#f97316 "; // Purple dark
                             } else {
-                                color = "#5b21b6"; // Purple very dark
+                                color = "#dc2626 "; // Purple very dark
                             }
                             layer.setStyle({
                                 fillColor: color,
                                 fillOpacity: 0.7,
                                 weight: 2,
-                                color: "#a855f7",
+                                color: colorLine,
                             });
                             layer.bindPopup(
                                 `<div class="text-black">
-                                            <h3 class="font-bold text-lg mb-2">${kecamatan.nama_kecamatan}</h3>
+                                            <h3 class="font-bold text-lg mb-2">${
+                                                kecamatan.nama_kecamatan
+                                            }</h3>
                                             <div class="space-y-1">
-                                                <p><span class="font-semibold">Kepadatan:</span> ${dataPenduduk.kepadatan_penduduk} jiwa/km²</p>
-                                                <p><span class="font-semibold">Total Penduduk:</span> ${dataPenduduk.jumlah_penduduk} jiwa</p>
-                                                <p><span class="font-semibold">Tahun:</span> ${dataPenduduk.tahun}</p>
-                                                <a class="text-purple-500 active:text-purple-500" href="kecamatan/${kecamatan.id}">detail</a>
+                                                <p><span class="font-semibold">Luas:</span> ${
+                                                    kecamatan.luas
+                                                        ? kecamatan.luas
+                                                        : 0
+                                                } km²</p>
+                                                <p><span class="font-semibold">Kepadatan:</span> ${
+                                                    dataPenduduk.kepadatan_penduduk
+                                                } jiwa/km²</p>
+                                                <p><span class="font-semibold">Total Penduduk:</span> ${
+                                                    dataPenduduk.jumlah_penduduk
+                                                } jiwa</p>
+                                                <p><span class="font-semibold">Tahun:</span> ${
+                                                    dataPenduduk.tahun
+                                                }</p>
+                                                <a class="text-purple-500 active:text-purple-500" href="kecamatan/${
+                                                    kecamatan.id
+                                                }">detail</a>
                                             </div>
                                         </div>`
                             );
@@ -310,28 +329,28 @@ const Maps = () => {
 
                                 <div className="space-y-3">
                                     <div className="flex items-center bg-white rounded-lg p-3 shadow-sm border border-purple-200">
-                                        <div className="w-6 h-6 rounded-full bg-gradient-to-r from-purple-300 to-purple-400 mr-3 shadow-sm"></div>
+                                        <div className="w-6 h-6 rounded-full bg-gradient-to-r from-green-300 to-green-400 mr-3 shadow-sm"></div>
                                         <span className="text-gray-700 font-medium">
                                             Rendah (&lt; 500)
                                         </span>
                                     </div>
 
                                     <div className="flex items-center bg-white rounded-lg p-3 shadow-sm border border-purple-200">
-                                        <div className="w-6 h-6 rounded-full bg-gradient-to-r from-purple-400 to-purple-500 mr-3 shadow-sm"></div>
+                                        <div className="w-6 h-6 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 mr-3 shadow-sm"></div>
                                         <span className="text-gray-700 font-medium">
                                             Sedang (500-1500)
                                         </span>
                                     </div>
 
                                     <div className="flex items-center bg-white rounded-lg p-3 shadow-sm border border-purple-200">
-                                        <div className="w-6 h-6 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 mr-3 shadow-sm"></div>
+                                        <div className="w-6 h-6 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 mr-3 shadow-sm"></div>
                                         <span className="text-gray-700 font-medium">
                                             Tinggi (1500-3000)
                                         </span>
                                     </div>
 
                                     <div className="flex items-center bg-white rounded-lg p-3 shadow-sm border border-purple-200">
-                                        <div className="w-6 h-6 rounded-full bg-gradient-to-r from-purple-600 to-purple-700 mr-3 shadow-sm"></div>
+                                        <div className="w-6 h-6 rounded-full bg-gradient-to-r from-red-600 to-red-700 mr-3 shadow-sm"></div>
                                         <span className="text-gray-700 font-medium">
                                             Sangat Tinggi (&gt; 3000)
                                         </span>

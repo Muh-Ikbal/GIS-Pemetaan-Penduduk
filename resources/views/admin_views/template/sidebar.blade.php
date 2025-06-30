@@ -5,7 +5,8 @@
       aria-hidden="true" id="iconSidenav"></i>
     <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html "
       target="_blank">
-      <img src="../assets/img/logo-black.png" class="navbar-brand-img " style="width:100% !important; height: 100% !important;" alt="main_logo">
+      <img src="{{ asset('assets/img/logo-black.png') }}" class="navbar-brand-img "
+        style="width:100% !important; height: 100% !important;" alt="main_logo">
       {{-- <span class="ms-1 font-weight-bold">Soft UI Dashboard 3</span> --}}
     </a>
   </div>
@@ -16,6 +17,7 @@
         <a class="nav-link " href="{{ route('admin.dashboard') }}">
           <div
             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+
             <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink">
               <title>shop </title>
