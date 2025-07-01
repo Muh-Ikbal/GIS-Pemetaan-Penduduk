@@ -182,9 +182,7 @@ const Maps = () => {
             map.remove();
         };
     }, [mapsData, kecamatanData, selectedYear]);
-    const tahunOptions =Array.isArray(mapsData) && mapsData.length > 0
-        ? [...new Set(mapsData.map((item) => item.tahun))]
-        : [];
+    console.log(mapsData)
     return (
         <div className="min-h-screen bg-white py-8 px-3 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
             {/* Header with gradient */}
@@ -210,8 +208,10 @@ const Maps = () => {
                         className="appearance-none bg-gradient-to-r from-purple-500 to-purple-600 text-black px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-300 cursor-pointer"
                         value={selectedYear}
                     >
-                        {tahunOptions.length > 0 ? (
-                            tahunOptions.map((tahun) => (
+                        {Array.isArray(mapsData) && mapsData.length > 0 ? (
+                            [
+                                ...new Set(mapsData.map((item) => item.tahun)),
+                            ].map((tahun) => (
                                 <option
                                     className="text-black"
                                     key={tahun}
