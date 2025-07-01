@@ -6,6 +6,7 @@ use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\DataPendudukController;
 use App\Http\Controllers\UserViewController;
 use App\Http\Controllers\DashboardController;
+use Illuminate\Support\Facades\File;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -58,6 +59,24 @@ Route::prefix("api")->group(function () {
     Route::get("data-kecamatan", [UserViewController::class, 'getDataKecamatan'])->name('api.data-kecamatan');
     Route::get("kecamatan/{id}", [UserViewController::class, 'laporan'])->name('api.laporan-kecamatan');
 });
+
+Route::get('storage/geojson/{filename}', function ($filename) {
+    $path = storage_path('app/public/geojson' . $filename);
+
+    if (!File::exists($path)) abort(404);
+
+    return response()->file($path);
+});
+Route::get('storage/kecamatan/{filename}', function ($filename) {
+    $path = storage_path('app/public/kecamatan' . $filename);
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    return response()->file($path);
+});
+
 
 Route::get("/{any?}", function () {
     return view("user_views.app");
