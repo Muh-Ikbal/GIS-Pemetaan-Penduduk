@@ -60,22 +60,22 @@ Route::prefix("api")->group(function () {
     Route::get("kecamatan/{id}", [UserViewController::class, 'laporan'])->name('api.laporan-kecamatan');
 });
 
-Route::get('storage/geojson/{filename}', function ($filename) {
-    $path = storage_path('app/public/geojson' . $filename);
+// Route::get('storage/geojson/{filename}', function ($filename) {
+//     $path = storage_path('app/public/geojson' . $filename);
 
-    if (!File::exists($path)) abort(404);
+//     if (!File::exists($path)) abort(404);
 
-    return response()->file($path);
-});
-Route::get('storage/kecamatan/{filename}', function ($filename) {
-    $path = storage_path('app/public/kecamatan' . $filename);
+//     return response()->file($path);
+// });
+// Route::get('storage/kecamatan/{filename}', function ($filename) {
+//     $path = storage_path('app/public/kecamatan' . $filename);
 
-    if (!File::exists($path)) {
-        abort(404);
-    }
+//     if (!File::exists($path)) {
+//         abort(404);
+//     }
 
-    return response()->file($path);
-});
+//     return response()->file($path);
+// });
 
 
 Route::get("/{any?}", function () {
