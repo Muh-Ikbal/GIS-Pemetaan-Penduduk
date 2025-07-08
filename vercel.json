@@ -9,7 +9,9 @@
         { "src": "/favicon.ico", "dest": "/public/favicon.ico" },
         { "src": "/images/(.*)", "dest": "/public/images/$1" },
         { "src": "/build/(.*)", "dest": "/public/build/" },
-        { "src": "/(.*)", "dest": "/api/index.php" }
+        { "src": "/(.*)", "dest": "/api/index.php" },
+        { "src": "/api/(.*)", "dest": "/public/index.php" },
+        { "src": "/(.*)", "dest": "/public/index.php" }
     ],
     "public": true,
     "buildCommand": "vite build",

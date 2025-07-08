@@ -1,7 +1,7 @@
 import axios from 'axios';
 export const API_URL = import.meta.env.VITE_API_URL;
 
-
+console.log(API_URL)
 export async function getMaps(tahun = '') {
     return axios.get(`${API_URL}/data-penduduk`)
         .then(response => response.data)
