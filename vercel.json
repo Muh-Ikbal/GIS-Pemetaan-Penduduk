@@ -1,32 +1,35 @@
 {
     "version": 2,
     "framework": null,
+    "functions": {
+        "apiv/index.php": { "runtime": "vercel-php@0.7.3" }
+    },
     "routes": [
-      { "src": "/assets/(.*)", "dest": "/public/assets/$1" },
-      { "src": "/favicon.ico", "dest": "/public/favicon.ico" },
-      { "src": "/images/(.*)", "dest": "/public/images/$1" },
-      { "src": "/build/(.*)", "dest": "/public/build/$1" },
+        { "src": "/assets/(.*)", "dest": "/public/assets/$1" },
+        { "src": "/favicon.ico", "dest": "/public/favicon.ico" },
+        { "src": "/images/(.*)", "dest": "/public/images/$1" },
+        { "src": "/build/(.*)", "dest": "/public/build/" },
+        { "src": "/(.*)", "dest": "/apiv/index.php" },
 
-      { "src": "/api/(.*)", "dest": "/public/index.php" },
-
-      { "src": "/(.*)", "dest": "/public/index.php" }
     ],
     "public": true,
     "buildCommand": "vite build",
     "outputDirectory": "public",
     "env": {
-      "APP_ENV": "production",
-      "APP_DEBUG": "true",
-      "APP_URL": "https://pemetaanpendudukweb.vercel.app/",
-      "APP_CONFIG_CACHE": "/tmp/config.php",
-      "APP_EVENTS_CACHE": "/tmp/events.php",
-      "APP_PACKAGES_CACHE": "/tmp/packages.php",
-      "APP_ROUTES_CACHE": "/tmp/routes.php",
-      "APP_SERVICES_CACHE": "/tmp/services.php",
-      "VIEW_COMPILED_PATH": "/tmp",
-      "CACHE_DRIVER": "array",
-      "LOG_CHANNEL": "stderr",
-      "SESSION_DRIVER": "cookie",
-      "VITE_API_URL": "https://pemetaanpendudukweb.vercel.app/api"
+        "APP_ENV": "production",
+        "APP_DEBUG": "true",
+        "APP_URL": "https://pemetaanpendudukweb.vercel.app/",
+        "APP_CONFIG_CACHE": "/tmp/config.php",
+        "APP_EVENTS_CACHE": "/tmp/events.php",
+        "APP_PACKAGES_CACHE": "/tmp/packages.php",
+        "APP_ROUTES_CACHE": "/tmp/routes.php",
+        "APP_SERVICES_CACHE": "/tmp/services.php",
+        "VIEW_COMPILED_PATH": "/tmp",
+        "CACHE_DRIVER": "array",
+        "LOG_CHANNEL": "stderr",
+        "SESSION_DRIVER": "cookie",
+        "VITE_API_URL": "https://pemetaanpendudukweb.vercel.app/api"
+
+
     }
-  }
+}
