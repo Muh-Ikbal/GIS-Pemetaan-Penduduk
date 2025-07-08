@@ -2,14 +2,14 @@
     "version": 2,
     "framework": null,
     "functions": {
-        "apiv/index.php": { "runtime": "vercel-php@0.7.3" }
+        "api/index.php": { "runtime": "vercel-php@0.7.3" }
     },
     "routes": [
         { "src": "/assets/(.*)", "dest": "/public/assets/$1" },
         { "src": "/favicon.ico", "dest": "/public/favicon.ico" },
         { "src": "/images/(.*)", "dest": "/public/images/$1" },
         { "src": "/build/(.*)", "dest": "/public/build/" },
-        { "src": "/(.*)", "dest": "/apiv/index.php" }
+        { "src": "/(.*)", "dest": "/api/index.php" }
 
     ],
     "public": true,
@@ -28,7 +28,7 @@
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
-        "VITE_API_URL": "https://pemetaanpendudukweb.vercel.app/api"
+        "VITE_API_URL": "https://pemetaanpendudukweb.vercel.app/data"
 
 
     }
