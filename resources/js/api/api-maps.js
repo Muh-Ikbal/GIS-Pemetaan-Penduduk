@@ -1,7 +1,7 @@
 import axios from 'axios';
 const API_URL = `https://gis-pemetaan-penduduk-production-fa51.up.railway.app/api`;
 
-console.log(API_URL)
+console.log("app url: ",API_URL)
 export async function getMaps(tahun = '') {
     return axios.get(`${API_URL}/data-penduduk`)
         .then(response => response.data)
