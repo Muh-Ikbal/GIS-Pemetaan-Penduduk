@@ -54,7 +54,7 @@ Route::prefix("admin")->middleware('auth')->group(function () {
     });
 });
 
-Route::prefix("data")->group(function () {
+Route::prefix("api")->group(function () {
     Route::get("data-penduduk", [UserViewController::class, 'getDataPenduduk'])->name('api.data-penduduk');
     Route::get("data-kecamatan", [UserViewController::class, 'getDataKecamatan'])->name('api.data-kecamatan');
     Route::get("kecamatan/{id}", [UserViewController::class, 'laporan'])->name('api.laporan-kecamatan');
@@ -80,5 +80,5 @@ Route::prefix("data")->group(function () {
 
 Route::get("/{any?}", function () {
     return view("user_views.app");
-})->where("any", '^(?!data|admin|storage|chart|admin_assets|images).*$');
+})->where("any", '^(?!api|admin|storage|chart|admin_assets|images).*$');
 require __DIR__ . '/auth.php';
