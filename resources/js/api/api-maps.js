@@ -1,9 +1,10 @@
 import axios from 'axios';
-const API_URL = `https://gis-pemetaan-penduduk-production-fa51.up.railway.app/api`;
+const API_URL = `https://gis-pemetaan-penduduk-production-fa51.up.railway.app/data`;
 
-// console.log("app url: ",API_URL)
 export async function getMaps(tahun = '') {
-    return axios.get(`api/data-penduduk`)
+    console.log("app url: ",API_URL)
+
+    return axios.get(`${API_URL}/data-penduduk`)
         .then(response => response.data)
         .catch(error => {
         console.error('Error fetching maps:', error);
@@ -12,7 +13,7 @@ export async function getMaps(tahun = '') {
 }
 
 export async function getKecamatan(){
-    return axios.get(`api/data-kecamatan`).then(response => response.data)
+    return axios.get(`${API_URL}/data-kecamatan`).then(response => response.data)
     .catch(error => {
         console.error('Error fetching kecamatan:', error);
         throw error;
@@ -21,7 +22,7 @@ export async function getKecamatan(){
 
 export async function getDetailKecamatan(id){
     try{
-        const response = await axios.get(`api/kecamatan/` + id);
+        const response = await axios.get(`${API_URL}/kecamatan/` + id);
         return response.data;
     }catch(err){
         console.error('Error fetching detail kecamatan:', err);
