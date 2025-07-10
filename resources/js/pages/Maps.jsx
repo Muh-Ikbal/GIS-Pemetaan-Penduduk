@@ -182,7 +182,6 @@ const Maps = () => {
             map.remove();
         };
     }, [kecamatanData]);
-    console.log(mapsData);
     return (
         <div className="min-h-screen bg-white py-8 px-3 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
             {/* Header with gradient */}
