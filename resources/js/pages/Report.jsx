@@ -52,7 +52,7 @@ const Report = () => {
             const geojsonPath = kecamatan.geojson;
             try {
                 const response = await axios.get(
-                    `storage/geojson/${geojsonPath}`
+                    `https://gis-pemetaan-penduduk-production-fa51.up.railway.app/storage/geojson/${geojsonPath}`
                 );
                 const geojsonLayer = L.geoJSON(response.data, {
                     style: {
