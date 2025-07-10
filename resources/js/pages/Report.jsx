@@ -52,7 +52,7 @@ const Report = () => {
             const geojsonPath = kecamatan.geojson;
             try {
                 const response = await axios.get(
-                    `http://localhost:8000/storage/geojson/${geojsonPath}`
+                    `storage/geojson/${geojsonPath}`
                 );
                 const geojsonLayer = L.geoJSON(response.data, {
                     style: {
@@ -82,7 +82,7 @@ const Report = () => {
                 <h1 className="text-2xl md:text-4xl font-bold text-purple-700 mb-4">
                     Laporan Kepadatan Penduduk Kecamatan {kecamatan?.nama_kecamatan || "Kecamatan"}
                 </h1>
-               
+
             </div>
 
             <div className="max-w-6xl mx-auto rounded-lg overflow-hidden p-4">
@@ -153,7 +153,7 @@ const Report = () => {
                     )}
                 </div>
 
-               
+
             </div>
         </div>
     );
