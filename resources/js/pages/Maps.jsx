@@ -174,7 +174,7 @@ const Maps = () => {
             }
         }
 
-        if (kecamatanData.length > 0 && mapsData.length > 0) {
+        if (kecamatanData.length > 0) {
             renderLayers();
         }
         return () => {
